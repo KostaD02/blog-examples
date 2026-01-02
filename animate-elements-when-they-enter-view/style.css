@@ -1,0 +1,111 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #0a192f;
+  color: #ccd6f6;
+}
+
+.spacer {
+  min-height: 90vh;
+  display: grid;
+  place-items: center;
+  font-size: clamp(22px, 5vw, 32px);
+}
+
+.spacer:last-child {
+  min-height: 40vh;
+}
+
+.container {
+  display: grid;
+  inline-size: 100%;
+  max-inline-size: 56rem;
+  padding: 2rem;
+  margin-inline: auto;
+  gap: 2rem;
+
+  grid:
+    "a b c" 20rem
+    "a d d" 10rem
+    "f f e" 15rem
+    "g g e" 8rem
+    "i i e" 16rem
+    / 1fr 1.4fr 1fr;
+}
+
+.fancy-element {
+  background: #0f203f;
+  border-radius: 14px;
+  opacity: 0.5;
+  transform: scale(0.92);
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 0 0 rgba(100, 255, 218, 0);
+
+  backface-visibility: hidden;
+}
+
+.fancy-element:nth-of-type(1) {
+  grid-area: a;
+}
+.fancy-element:nth-of-type(2) {
+  grid-area: b;
+}
+.fancy-element:nth-of-type(3) {
+  grid-area: c;
+}
+.fancy-element:nth-of-type(4) {
+  grid-area: d;
+}
+.fancy-element:nth-of-type(5) {
+  grid-area: e;
+}
+.fancy-element:nth-of-type(6) {
+  grid-area: f;
+}
+.fancy-element:nth-of-type(7) {
+  grid-area: g;
+}
+.fancy-element:nth-of-type(8) {
+  grid-area: h;
+}
+.fancy-element:nth-of-type(9) {
+  grid-area: i;
+}
+
+@supports (animation-timeline: view()) {
+  .fancy-element {
+    animation: reveal linear both;
+    animation-timeline: view(block);
+    animation-range: cover 10% cover 45%;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45),
+      0 0 0 1px rgba(100, 255, 218, 0.25);
+  }
+}
+
+footer[data-support] {
+  position: fixed;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  background: #64ffda;
+  color: #0a192f;
+}
